@@ -11,10 +11,3 @@ class RGBColor
 	end
 
 end
-
-colorToTest = RGBColor.new(10, 11, 12)
-
-puts colorToTest
-puts colorToTest.red
-puts colorToTest.green
-puts colorToTest.blue	
