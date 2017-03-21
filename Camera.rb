@@ -7,7 +7,7 @@ class Camera
     @eye = eye #vector
     @center = center #vector
     @up = up #vector
-    @fov = fov.to_f # float
+    @fov = ((fov * Math::PI)/180).to_f#why? convert degrees to radians
     @df = df # float
   end
 
@@ -35,13 +35,13 @@ class Camera
   def rayDirection(i, j, nx, ny)
     t = @df * Math::tan(@fov/2).to_f
     b = -t
-    r = (t * nx) / ny
+    r = ((t * nx) / ny).to_f
     l = -r
     u = l + (r − l) * (i + 0.5)/nx
     v = b + (t − b) * (j + 0.5)/ny
-    menosdW = vectorW.multiplicarPorK(-@df)
+    negativodW = vectorW.multiplicarPorK(-@df)
     uu = vectorU.multiplicarPorK(u)
     vv = vectorV.multiplicarPorK(v)
-    return menosdW.mas(uu).mas(vv)
+    return negativodW.mas(uu).mas(vv)
   end
 end
