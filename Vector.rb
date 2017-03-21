@@ -9,16 +9,26 @@ class Vector
 		@z = z.to_f
 	end
 
-	def sumar vectorParaSumar
+	def show
+		puts "(#{@x}, #{@y}, #{@z})"
+	end
+
+	def mas vectorParaSumar
 		@x += vectorParaSumar.x
 		@y += vectorParaSumar.y
 		@z += vectorParaSumar.z
 	end
 
-	def restar vectorParaRestar
+	def menos vectorParaRestar
 		@x -= vectorParaRestar.x
 		@y -= vectorParaRestar.y
 		@z -= vectorParaRestar.z
+	end
+
+	def multiplicarPorK k
+		@x *= k
+		@y *= k
+		@z *= k
 	end
 
 	def  modulo
@@ -45,5 +55,12 @@ class Vector
 		return Vector.new(i, j, k)
 	end
 
+	def self.sumarVectores vec1, vec2
+		vec1.mas(vec2)
+	end
+
+	def self.restarVectores vec1, vec2
+		vec1.menos(vec2)
+	end
 
 end
