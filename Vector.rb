@@ -10,57 +10,40 @@ class Vector
 	end
 
 	def show
-		puts "(#{@x}, #{@y}, #{@z})"
+		puts "(x: #{@x}, y:  #{@y}, z: #{@z})"
 	end
 
-	def mas vectorParaSumar
-		@x += vectorParaSumar.x
-		@y += vectorParaSumar.y
-		@z += vectorParaSumar.z
+	def plus vectorToAdd
+		Vector.new(@x + vectorToAdd.x, @y + vectorToAdd.y, @z + vectorToAdd.z)
 	end
 
-	def menos vectorParaRestar
-		@x -= vectorParaRestar.x
-		@y -= vectorParaRestar.y
-		@z -= vectorParaRestar.z
+	def minus vectorToSubstract
+		Vector.new(@x - vectorToSubstract.x, @y - vectorToSubstract.y, @z - vectorToSubstract.z)
 	end
 
-	def multiplicarPorK k
-		@x *= k
-		@y *= k
-		@z *= k
+	def times_K k
+		x = @x * k
+    y = @y * k
+    z = @z * k
+    return Vector.new(x, y, z)
 	end
 
 	def  modulo
 		Math.sqrt(@x**2 + @y**2 + @z**2)
 	end
 
-	def multiplicarVectorialmentePor vectorParaMultiplicar
-		@x = (@y * vectorParaMultiplicar.z) - (@z * vectorParaMultiplicar.y)
-		@y = (@z * vectorParaMultiplicar.x) - (@x * vectorParaMultiplicar.z)
-		@z = (@x * vectorParaMultiplicar.y) - (@y * vectorParaMultiplicar.x)
-	end
-
-	def multiplicarEscalarmentePor vectorParaMultiplicar
-		i = @x + vectorParaMultiplicar.x
-		j = @y + vectorParaMultiplicar.y
-		k = @z + vectorParaMultiplicar.z
+	def dot_product vecForDotProduct
+		i = @x * vecForDotProduct.x
+		j = @y * vecForDotProduct.y
+		k = @z * vecForDotProduct.z
 		return (i + j + k).to_f
 	end
 
-	def self.multiplicacionVectorial (vec1, vec2)
-		i = (vec1.y * vec2.z) - (vec1.z * vec2.y)
-		j = (vec1.z * vec2.x) - (vec1.x * vec2.z)
-		k = (vec1.x * vec2.y) - (vec1.y * vec2.x)
+	def cross_product vecForCrossProduct
+		i = (@y * vecForCrossProduct.z) - (@z * vecForCrossProduct.y)
+		j = (@z * vecForCrossProduct.x) - (@x * vecForCrossProduct.z)
+		k = (@x * vecForCrossProduct.y) - (@y * vecForCrossProduct.x)
 		return Vector.new(i, j, k)
-	end
-
-	def self.sumarVectores vec1, vec2
-		vec1.mas(vec2)
-	end
-
-	def self.restarVectores vec1, vec2
-		vec1.menos(vec2)
 	end
 
 end
