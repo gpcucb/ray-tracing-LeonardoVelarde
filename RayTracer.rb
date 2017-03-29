@@ -24,19 +24,18 @@ class RayTracer < Renderer
     # Sphere values
     position = Vector.new(370,20,370)
     radius = 120
-    sphere_color = RGBColor.new(0.4823529411, 0.7764705, 0.5529411)
+    sphere_color = RGBColor.new(66, 244, 223)
 
     # Triangle values
-    # a = Vector.new(552,8,0)
-    # b = Vector.new(0,0,0)
-    # c = Vector.new(0,0,560)
-    # triangle_color = RGBColor.new(1.0,1.0,0.0)
+    a = Vector.new(552,8,0)
+    b = Vector.new(0,0,0)
+    c = Vector.new(0,0,560)
+    triangle_color = RGBColor.new(65, 146, 244)
 
     @sphere = Sphere.new(position, radius, sphere_color)
-    # @triangle = Triangle.new(a, b, c, triangle_color)
+    @triangle = Triangle.new(a, b, c, triangle_color)
     @objects=[]
-    @objects << @sphere
-    # @objects << @sphere << @triangle
+    @objects << @sphere << @triangle
   end
 
   def calculate_pixel(i, j)

@@ -4,8 +4,8 @@ class RGBColor
 	attr_accessor :blue
 
 	def initialize (red, green, blue)
-		@red = red.to_f
-		@green = green.to_f
-		@blue = blue.to_f
+		@red = red / 255.0
+		@green = green / 255.0
+		@blue = blue / 255.0
 	end
 end
