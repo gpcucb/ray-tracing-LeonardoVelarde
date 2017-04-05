@@ -1,5 +1,3 @@
-require_relative 'Vector.rb'
-
 class Ray
   attr_accessor :position, :direction
 

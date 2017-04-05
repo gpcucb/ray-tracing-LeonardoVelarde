@@ -2,12 +2,12 @@ require_relative 'Vector.rb'
 require_relative 'Intersection.rb'
 
 class Sphere
-  attr_accessor :position, :radius, :color
+  attr_accessor :position, :radius, :material
 
-  def initialize(position, radius, color)
+  def initialize(position, radius, material)
     @position = position #center(c)
     @radius = radius.to_f
-    @color = color
+    @material = material
   end
 
   def intersection?(ray, t)
@@ -20,7 +20,6 @@ class Sphere
     a = d.dot_product(d)
     b = dd.dot_product(e_c)
     c = e_c.dot_product(e_c) - @radius ** 2
-    #puts "(A: #{a} , B: #{b} , C: #{c})"
 
     discriminant = b**2-(4*a*c)
 
@@ -42,4 +41,10 @@ class Sphere
 
     return Intersection.new(t, success)
   end
+
+  def normal intersertion_point
+    p_c = intersertion_point.minus(@position)
+    return Vector.new(p_c.x/@radius,p_c.y/@radius,p_c.z/@radius)
+  end
+
 end

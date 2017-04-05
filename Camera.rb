@@ -31,16 +31,19 @@ class Camera
     return vectorW.cross_product(vectorU)
   end
 
-  def rayDirection(i, j, nx, ny)
+  def ray_direction(i, j, nx, ny)
     t = @df * Math::tan(@fov/2).to_f
     b = -t
-    r = ((t * nx) / ny).to_f
+    r = (((nx * t) / ny)).to_f
     l = -r
-    u = l + (r - l) * (i + 0.5)/nx
-    v = b + (t - b) * (j + 0.5)/ny
+
+    u = l + ((r - l) * (i + 0.5))/nx
+    v = b + ((t - b) * (j + 0.5))/ny
+
     dw = vectorW.times_K(-@df)
     uu = vectorU.times_K(u)
     vv = vectorV.times_K(v)
+
     return (dw.plus(uu)).plus(vv)
   end
 end

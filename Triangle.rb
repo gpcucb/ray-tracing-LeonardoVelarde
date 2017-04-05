@@ -3,15 +3,15 @@ require_relative 'Intersection.rb'
 
 class Triangle
 
-  attr_accessor :a,:b,:c, :color
-  def initialize(a, b, c, color)
+  attr_accessor :a,:b,:c, :material
+  def initialize(a, b, c, material)
     @a = a#vector
     @b = b#vector
     @c = c#vector
-    @color = color
+    @material = material
   end
 
-  def determinant(vec_1, vec_2, vec_3)
+  def determinant(vec_1,vec_2,vec_3)
     a, b, c = vec_1.x, vec_1.y, vec_1.z
     d, e, f = vec_2.x, vec_2.y, vec_2.z
     g, h, i = vec_3.x, vec_3.y, vec_3.z
@@ -39,5 +39,21 @@ class Triangle
     else
       return Intersection.unsuccessful
     end
+  end
+
+  def isLeft?(n)
+  	m = n.modulo
+  	return n.x/m < 0 && n.y/m < 0 && n.z/m < 0
+  end
+
+  def normal placeHolder # the sphere needs an argument in order to calculare the normal
+  	b_a = @b.minus(@a)
+  	c_a = @c.minus(@a)
+
+  	normal = b_a.cross_product(c_a)
+  	if isLeft?(normal)
+  		normal = normal.times_K(-1)
+  	end
+  	return normal
   end
 end

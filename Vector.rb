@@ -41,9 +41,13 @@ class Vector
 
 	def cross_product vecForCrossProduct
 		i = (@y * vecForCrossProduct.z) - (@z * vecForCrossProduct.y)
-		j = (@z * vecForCrossProduct.x) - (@x * vecForCrossProduct.z)
-		k = (@x * vecForCrossProduct.y) - (@y * vecForCrossProduct.x)
+    j = -((@x * vecForCrossProduct.z) - (@z * vecForCrossProduct.x))
+    k = (@x * vecForCrossProduct.y) - (@y * vecForCrossProduct.x)
 		return Vector.new(i, j, k)
+	end
+
+	def normal
+		return Vector.new(@x/modulo, @y/modulo, @z/modulo)
 	end
 
 end
